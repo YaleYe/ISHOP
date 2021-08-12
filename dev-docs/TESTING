@@ -1,0 +1,36 @@
+Mac os testing:
+
+selenium testing
+1. install selenium
+    link: https://selenium-python.readthedocs.io/installation.html
+
+2. find your suitable driver: mine is "ChromeDriver 88.0.4324.96"
+
+3. place your driver in the upper folder
+
+4. type in python tests.py
+
+model testing
+
+1. in the folder type in: ./manage.py test
+
+
+
+Window Testing
+
+1. install selenium
+    link: https://selenium-python.readthedocs.io/installation.html
+
+2. find your chrome version and find your suitable driver in the link above: mine is "ChromeDriver 88.0.4324.96"
+
+3. place your driver in the upper folder
+
+4. change the driver name to winchromedriver.exe
+
+5. go to tests.py and use "#" to comment out path for mac
+
+5. change directory to your testing folder
+
+6. type in python seleniumTesting.py.
+
+

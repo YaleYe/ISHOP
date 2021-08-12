@@ -1,0 +1,11 @@
+Python Package Install:
+
+  Install pip3: 
+      brew install python3
+  Install django
+      pip install django==3.1.7
+
+
+
+
+      

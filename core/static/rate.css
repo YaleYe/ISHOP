@@ -1,0 +1,48 @@
+/* source: https://jsfiddle.net/shadiabuhilal/0kwnb7ph/3/ */
+.txt-center {
+  text-align: center;
+}
+.hide {
+  display: none;
+}
+
+.clear {
+  float: none;
+  clear: both;
+}
+
+.rating {
+    width: 200px;
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: center;
+    position: relative;
+}
+
+.rating > label {
+    float: right;
+    display: inline;
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+    width: 1.1em;
+    cursor: pointer;
+    color: #000;
+	font-size: 30px;
+}
+
+.rating > label:hover,
+.rating > label:hover ~ label,
+.rating > input.radio-btn:checked ~ label {
+    color: transparent;
+}
+
+.rating > label:hover:before,
+.rating > label:hover ~ label:before,
+.rating > input.radio-btn:checked ~ label:before,
+.rating > input.radio-btn:checked ~ label:before {
+	content: "\2764";
+    position: absolute;
+    left: 0;
+    color: #FFD700;
+}

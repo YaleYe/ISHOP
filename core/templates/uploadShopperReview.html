@@ -1,0 +1,42 @@
+{% extends 'template.html' %}
+{% block body %}
+{% load static %}
+
+<div class="form-style-5">
+    <form method="POST" enctype="multipart/form-data">
+        <legend><span class="number"></span>Select the User</legend>
+        <select id="user" name="user">
+            <optgroup label="user">
+                {% for user in users %}
+                <option>{{ user }}</option>
+                {% endfor %}
+            </optgroup>
+        </select>
+    {% csrf_token %}
+        <fieldset>
+            <legend><span class="number"></span>Write your most honest review</legend>
+            <input type="text" id="review" name="review" placeholder="write your review *">
+        </fieldset>
+        <legend><span class="number"></span>Rate</legend>
+        <div class="txt-center">
+            <div class="rating">
+                <input id="star5" name="rate" type="radio" value="5" class="radio-btn hide" />
+                <label for="star5" >&#128536;</label>
+                <input id="star4" name="rate" type="radio" value="4" class="radio-btn hide" />
+                <label for="star4" >&#128538;</label>
+                <input id="star3" name="rate" type="radio" value="3" class="radio-btn hide" />
+                <label for="star3" >&#128566;</label>
+                <input id="star2" name="rate" type="radio" value="2" class="radio-btn hide" />
+                <label for="star2" >&#128543;</label>
+                <input id="star1" name="rate" type="radio" value="1" class="radio-btn hide" />
+                <label for="star1" >&#128557;</label>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <input id="submit" type="submit" value="Sumbit" />
+
+        </form>
+
+    </div>
+{% endblock %}

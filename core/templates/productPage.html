@@ -1,0 +1,23 @@
+{% extends 'template.html' %}
+
+{% block body %}
+{%  csrf_token %}
+<div class="container">
+    <div class="row">
+        {% for product in product_list %}
+          <div class="col-sm-3">
+               <div class="card">
+                  <img class="card-img-top" src="{{ product.image.url }}">
+                  <div class="card-body">
+                      <h5 class="card-title">{{ product.title }}</h5>
+                      <p class="card-text">{{ product.description }}</p>
+                      <p class="card-text">Price: ${{product.price}}</p>
+                      <p class="card-text">Stocks: {{product.stocking}}</p>
+                      <p class="card-text">Category: {{product.category}}</p>
+                  </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

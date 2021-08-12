@@ -1,0 +1,46 @@
+{% extends 'template.html' %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'previousOrder.css' %}">
+
+{% block body %}
+
+<div class="container bootdey">
+    <div class="panel panel-default panel-order">
+        <div class="panel-heading">
+            <strong>Order history</strong>
+            <div class="btn-group pull-right">
+            </div>
+        </div>
+
+        <div class="panel-body">
+
+            {% for order in previousOrders %}
+            <br>
+            <div class="row">
+                <div class="col-md-1"><img src="https://bootdey.com/img/Content/user_3.jpg" class="media-object img-thumbnail"/></div>
+                <div class="col-md-11">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="pull-right"><label class="label label-danger">{{ order.order_status }}</label></div>
+                            <span><strong>Order ID: </strong></span><span class="label label-info">{{ order.orderID }}</span>
+                            <br>Quantity : {{ order.totalItemsCount }}
+                            <br>Cost: {{ order.totalCost }}
+                            <br>Order Placed: {{ order.orderDate }}
+                            <br>Summary:
+                            {% for product in order.products.all %}
+                                {{ product.title }}</a>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            {% endfor %}
+
+        </div>
+        <div class="panel-footer">Only order placed within 60 years are displayed here</div>
+    </div>
+</div>
+
+{% endblock %}

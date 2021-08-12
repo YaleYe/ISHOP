@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'form.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'rate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'cart.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+
+    {% block head %}
+    {% endblock %}
+
+    <script> var user = '{{ request.user }}'
+    //source: https://docs.djangoproject.com/en/3.1/ref/csrf/
+    //create token
+        function getToken(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+            }
+        }
+    }
+    return cookieValue;
+}
+    const csrftoken = getToken('csrftoken');
+
+	</script>
+</head>
+<body>
+
+
+
+<!--source: https://getbootstrap.com/docs/4.0/components/navbar/-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/"><i class="fas fa-home">ISHOP</i></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item">
+                <a class="nav-link" href="/bestSellingProduct"><i class="fab fa-hotjar">Best Selling Products</i></a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Food</a>
+                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                     <a class="dropdown-item" href="/fresh">Fresh</a>
+                     <a class="dropdown-item" href="/beverage">Beverage</a>
+                     <a class="dropdown-item" href="/bakery">Bakery</a>
+                     <a class="dropdown-item" href="/supplement">Supplement</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Fashion</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/shirt">Shirt</a>
+                    <a class="dropdown-item" href="/dress">dress</a>
+                    <a class="dropdown-item" href="/pants">Pants</a>
+                    <a class="dropdown-item" href="/shoes">Shoes</a>
+                    <a class="dropdown-item" href="/socks">Socks</a>
+                    <a class="dropdown-item" href="/underwear">UnderWear</a>
+                    <a class="dropdown-item" href="/watches">Watches</a>
+                </div>
+            </li>
+
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Toys & Games</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/vroom">Vroom</a>
+                    <a class="dropdown-item" href="/Camera">Camera</a>
+                    <a class="dropdown-item" href="/computer">Computer</a>
+                    <a class="dropdown-item" href="/GameConsole">GameConsole</a>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/beastmode" style="color: red"><i class="fas fa-hand-holding-usd"></i>KILL MY WALLET</i><i class="fas fa-wallet"></i></a>
+            </li>
+
+        </ul>
+
+        {% if user.is_authenticated %}
+
+      <li class="nav-item dropdown">
+            <buttton class="btn btn-outline-success my-2 my-sm-0" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-concierge-bell">SERVICE</i></buttton>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                <form class="form-inline my-2 my-lg-0" action="/profile">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-id-badge">Profile</i></button>
+                </form>
+
+                <form class="form-inline my-2 my-lg-0" action="/myProduct">
+                    <button class="btn btn-outline-success my-2 my-sm-0"  type="submit"><i class="fas fa-warehouse">Product</i></button>
+                </form>
+
+                <form class="form-inline my-2 my-lg-0" action="/uploadProduct">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-upload">UploadProduct</i></button>
+                </form>
+
+                <form class="form-inline my-2 my-lg-0" action="/selectProduct">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-pen-square">UpdateProduct</i></button>
+                </form>
+
+                <form class="form-inline my-2 my-lg-0" action="/removeProduct">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-trash">RemoveProduct</i></button>
+                </form>
+
+                <form class="form-inline my-2 my-lg-0" action="/previousOrder">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-box-open">Previous Order</i></button>
+                </form>
+
+                <form class="form-inline my-2 my-lg-0" action="/myreview">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-user-tag">My Review</i></button>
+                </form>
+
+                <form class="form-inline my-2 my-lg-0" action="/uploadUserReview">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-user-plus">Write Review</i></button>
+                </form>
+
+
+                <form class="form-inline my-2 my-lg-0" action="/myproductreview">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-file-pdf">My Product Review</i></button>
+                </form>
+
+                <form class="form-inline my-2 my-lg-0" action="/uploadproductreview">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-file-pdf">Write Product Review</i></button>
+                </form>
+
+
+            </div>
+      </li>
+
+
+        <form class="form-inline my-2 my-lg-0" action="/cart">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-shopping-cart">CART</i></button>
+        </form>
+
+        <form class="form-inline my-2 my-lg-0" action="/logout">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-sign-out-alt">LOGOUT</i></button>
+        </form>
+
+        {% else %}
+      <form class="form-inline my-2 my-lg-0" action="/signup">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-user-plus">register</i></button>
+      </form>
+
+      <form class="form-inline my-2 my-lg-0" action="/signin">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-sign-in-alt">log in</i></button>
+      </form>
+      {% endif %}
+
+  </div>
+</nav>
+
+
+{% block body %}
+{% endblock %}
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" crossorigin="anonymous"></script>
+</body>
+</html>
+<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+</body>
+</html>

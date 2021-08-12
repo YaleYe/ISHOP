@@ -1,0 +1,13 @@
+How to Host the server:
+
+  before run the server run command:
+      python manage.py migrate
+  run command:
+      python manage.py runserver
+
+ Terminal Output should be like this:
+ Starting development server at http://127.0.0.1:8000/
+
+ http://127.0.0.1:8000/ will take you to main page(signup)
+
+

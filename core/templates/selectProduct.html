@@ -1,0 +1,20 @@
+{% extends 'template.html' %}
+{% block body %}
+{% load static %}
+
+<div class="form-style-5">
+    <form method="POST" enctype="multipart/form-data" id="selection">
+        {% csrf_token %}
+        <legend><span class="number"></span>Select the Product</legend>
+        <select id="productName" name="productName">
+            <optgroup label="Product">
+                {% for product in products %}
+                <option>{{ product.title }}</option>
+                {% endfor %}
+            </optgroup>
+        </select>
+        <input type="submit" name="select" value="select">
+    </form>
+</div>
+
+{% endblock %}

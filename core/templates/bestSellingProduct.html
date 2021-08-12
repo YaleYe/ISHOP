@@ -1,0 +1,20 @@
+{% extends 'template.html' %}
+{% block body %}
+<div class="form-style-5">
+    <legend><span class="number"></span>Here is our highest rating products</legend>
+    <table>
+        <tr>
+            <th>Product</th>
+            <th>Rate</th>
+            <th>ReviewCount</th>
+        </tr>
+    {% for item in product_list %}
+    <tr>
+        {% for info in item %}
+            <td>{{ info }}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+    </table>
+</div>
+{% endblock body %}

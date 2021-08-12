@@ -1,0 +1,10 @@
+{% extends 'template.html' %}
+{% block body %}
+<div class="form-style-5">
+    <legend><span class="number"></span>Here is what people comment about you:</legend>
+<p></p>
+    {% for review in reviews %}
+    <p>{{ review.review }}</p>
+    {% endfor %}
+</div>
+{% endblock body %}

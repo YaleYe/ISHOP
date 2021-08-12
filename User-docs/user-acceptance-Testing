@@ -1,0 +1,167 @@
+signup testing:
+  when server is running, go to: http://127.0.0.1:8000/signup/
+    a.input empty checking:
+      1. if user username is empty: send warning to user
+      2. if user password is empty: send warning to user
+      3. if user re-enter password is empty: send warning to user
+    b. Username Exist:
+      1.type in user name as "1" and fill in other with random strings: warning message with "User already exist
+    
+    c. Password dont match:
+      1. type in different values for password and re-enter password: warning message with "password dont match"
+
+Signin testing:
+  when server is running, go to: http://127.0.0.1:8000/signin/
+     a.input empty checking:
+      1. if user username is empty: send warning to user
+      2. if user Password is empty: send warning to user
+     
+     b. Password dont match:
+      1. type in "1" for username and "12" for password
+        warning of "user name and password dont exist"
+        
+     c. type in "1" for user name and "1" for password
+      successfully login and take you to main apge
+
+      
+    
+Update profile testing
+    After registration, it will take user to update profile page, user needs to fill out his information.
+        1. On left side, click the profile
+        2. The profile should display the same info as user input at first place
+        3. There is update profile link at the bottom, user needs to click it
+        4. Update the information and click confirm
+        5. The website will take user to the main page
+        6. User may click profile and it will display the new information
+
+
+User Information database testing:
+    After user log in with username: 1 and password :1
+        1.click service
+        2.click profile
+        3.there should be a page display user information
+        4. the display data should be: email: 1@1.com, Phone: 111111111, Address line 1: 111, user id of: usernameID: 37ce71d2-bd68-4376-9f5d-db7e091e58fa, etc..
+        5. when user click update profile and type in the new information
+        6. click update
+        7. go back to service/profile page
+        8. new information should be displayed
+
+User UI for buyer page:
+    After user log in with username: 1 and password :1
+        1. when user click top home button(ISHOP):
+            All product should be displayed
+        2. when user select different category, the different item of that category will be displayed
+            example: click food-> fresh -> apple, chicken, egg, mushroom, stead, will be displayed
+
+
+User UI for seller page:
+    After user log in with username: 1 and password :1
+        1. click service
+        2. click my product
+            A page of products i previously updated should be displayed
+            if apple, fishoil, lego, milk is on the page, test is passed
+
+
+Upload/Archive/Update/delete product information from seller testing:
+    upload
+        After user log in with username: 1 and password :1
+            1. click service
+            2. click my upload product
+                A page of form will be displayed
+                user fill out all the forms and submit
+                if submit success, there should have a little line showings "product has been submitted"
+            3. click product under service
+               at the end, your new uploaded product is updated
+
+     archive:
+        After user log in with username: 1 and password :1
+            1. click service
+            2. click product
+            3. each product should display in a card with their information
+
+     update
+        After user log in with username: 1 and password :1
+            1. click service
+            2. click update product
+            3. select the product you want to update
+            4. the product name is fixed(change be changed)
+            5. type in the new information and click confirm
+            5. go back to product page, new product information will be the displayed
+
+     delete
+        After user log in with username: 1 and password :1
+            1. click service
+            2. click delete product
+            3. select the product you want to delete
+            4. click submit
+            5. go back to product page, product will be removed
+
+
+
+User add to cart testing:
+    After user log in with username: 1 and password :1
+        1. go to home page  "homeURL: http://127.0.0.1:8000"
+        2. click add to cart
+        3. click cart
+        4. item will be added
+
+    After user log in with username: 1 and password :1
+        1. click cart
+        2. click remove
+        3. item will be removed
+
+
+# review system testing
+# item must be checked out first to be reviewed
+product review upload testing:
+    After user log in with username: 1 and password :1
+        1. click service
+        2. click upload product review
+        3. select product
+        4. turn in review
+
+product review upload testing:
+    After user log in with username: 123 and password :123
+        1. click Food
+        2. click Beverage
+        3. add milk into cart
+        4. check out
+        5. go to product review
+        6. write down a review for milk
+        7. logout
+        8. log-in again with username 1 and password 1
+        9. click service
+        10. click my product review
+        11. the review uploaded from user123 is now displayed
+
+user review upload testing:
+    After user log in with username: 1 and password :1
+        1. click service
+        2. click write review
+        3. select user 1
+        4. write down some review
+        5. submit
+
+   User view page:
+        1. click service
+        2. click my review
+        3. your new uploaded review will be displayed
+        
+
+Check out for customer testing:
+    After user log in with username: 1 and password :1
+        1. add items to the cart
+        2. click cart
+        3. click checkout
+        4. a page of confirmation will be displayed with all the cart product information
+
+previous order testing:
+    1. click service
+    2. click previous order
+    3. a page with previous order(and details) will be displayed
+
+
+
+
+
+
